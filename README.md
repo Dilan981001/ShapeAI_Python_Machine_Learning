@@ -1,50 +1,28 @@
-import numpy as np
-import pandas as pd
-import sklearn
-
-from sklearn.datasets import load_boston
-df = load_boston()
-
-df.keys()
-
-print(df.DESCR)
-
-boston = pd.DataFrame(df.data, columns=df.feature_names)
-boston.head()
-
-boston['MEDV'] = df.target
-boston.head()
-
-boston.isnull()
-
-boston.isnull().sum()
-
-from sklearn.model_selection import train_test_split
-X = boston.drop('MEDV' , axis=1)
-Y = boston['MEDV']
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.15, random_state=5)
-print(X_train.shape)
-print(X_test.shape)
-print(Y_train.shape)
-print(Y_test.shape)
-
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
+# SHAPEAI PYTHON AND MACHINE LEARNING BOOTCAMP
+Hi I made this project during the 7 Days Free Bootcamp, conducted by <b> SHAPEAI
+</b>.
+The instructor during the session was Mr. Shaurya Sinha (Data Analyst Intern at Jio). I got to
+learn a lot during these 7 days and it was an amazing experience learning with SHAPEAI.
+<br><br>Here's the link for you to watch the sessions as well<br>
+<a href="https://www.youtube.com/playlist?list=PL7zl8TDRnbulNEA-59W7wWgCWE8LEOD6h"> <img src="https://github.com/ShapeAI/PYTHON-AND-DATA-ANALYTICS/blob/main/YOUTUBE%20THUMBNAIL-5.png"> </a>
+<br>I got to have hands on experience on:
+<li>Python
+<li>Machine Learning
+<li>Tensorflow
+<br>during these 7 days, and everything was explained from the very basics so that
+anyone with zero experience on programming can learn.
+I enjoyed these 7 days, you can as well. To register for next free 7 days bootcamp, visit:
+<a href="https://www.shapeai.tech"> www.shapeai.tech</a>
+or follow SHAPEAI on:
+<li><a href=
+"https://in.linkedin.com/company/shapeai">LinkedIn</a>
+<li><a href=
+"https://www.instagram.com/shape.ai/?hl=en">Instagram</a>
+<li><a
+href=
+"https://www.youtube.com/channel/UCTUvDLTW9meuDXWcbmISPdA">YouTu
+be</a>
+<li><a href=
+"https://github.com/shapeai">GitHub</a>
 
 
-
-lin_model = LinearRegression()
-lin_model.fit(X_train, Y_train)
-
-y_train_predict = lin_model.predict(X_train)
-rmse = (np.sqrt(mean_squared_error(Y_train, y_train_predict)))
-
-print("The model performance for training set")
-print('RMSE is {}'.format(rmse))
-print("\n")
-
-y_test_predict = lin_model.predict(X_test)
-rmse = (np.sqrt(mean_squared_error(Y_test, y_test_predict)))
-
-print("The model performance for training set")
-print('RMSE is {}'.format(rmse))
